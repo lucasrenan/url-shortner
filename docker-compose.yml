@@ -19,4 +19,9 @@ services:
       - db
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
+      - bundle_ruby25_slim:/app/.bundle:rw
+    environment:
+      DB_HOST: "db"
     command: ["bundle", "exec", "rails", "server", "-p", "3000", "--binding", "0.0.0.0"]

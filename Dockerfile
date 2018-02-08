@@ -5,4 +5,12 @@ RUN apt-get update && \
 
 WORKDIR /app
 
+COPY Gemfile* ./
+
+ENV \
+  BUNDLE_GEMFILE=./Gemfile \
+  BUNDLE_JOBS=2
+
+RUN bundle install
+
 COPY . ./

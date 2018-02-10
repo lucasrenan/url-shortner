@@ -1,4 +1,6 @@
 class Url < ApplicationRecord
+  validates :original_url, presence: true
+
   before_validation :generate_token
 
 private

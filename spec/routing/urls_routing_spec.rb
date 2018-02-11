@@ -7,7 +7,7 @@ RSpec.describe UrlsController, type: :routing do
     end
 
     it 'routes to #show' do
-      expect(:get => '/fd9994f1').to route_to('urls#show', :token => 'fd9994f1')
+      expect(:get => '/lALVIiy').to route_to('urls#show', :token => 'lALVIiy')
     end
 
     it 'routes to #create' do

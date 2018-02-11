@@ -1,0 +1,29 @@
+<% flash.each do |key, value| %>
+  <div class="<%= key %>"><%= value %></div>
+<% end %>
+
+<h1>Shorten Url</h1>
+
+<%= render 'form', url: @url %>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Original Url</th>
+      <th>Shortened</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.original_url %></td>
+        <td><%= link_to shortened_url(url.token), shortened_url(url.token) %></td>
+        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

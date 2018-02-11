@@ -1,24 +1,39 @@
-# README
+# Url Shortener
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails app is an implementation of a bit.ly like url shortener. It aims to be simple and fast.
 
-Things you may want to cover:
+Shortened urls are generated using a base62 token strategy, trying to avoid collisions and also reducing the database size. Tokens have 7 characters, which gives us 62^7 possible tokens.
 
-* Ruby version
+## Technologies
 
-* System dependencies
+* Ruby 2.5.0
+* Rails 5.1.4
+* Postgres 10.1
 
-* Configuration
+## Development with Docker
 
-* Database creation
+Building web image:
+```sh
+  docker-compose build
+```
 
-* Database initialization
+Setting the database up:
+```sh
+  docker-compose run --rm web rake db:create
+  docker-compose run --rm web bin/setup
+```
 
-* How to run the test suite
+Running the app:
+```sh
+  docker-compose up
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Running the specs:
+```sh
+  docker-compose run --rm web rspec
+```
 
-* Deployment instructions
+## TODO
 
-* ...
+- [ ] Cache (probably using Redis)
+- [ ] Url sanitization and validation

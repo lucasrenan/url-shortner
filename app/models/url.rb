@@ -6,7 +6,7 @@ class Url < ApplicationRecord
 private
   def generate_token
     if token.nil?
-      self.token = TokenGenerator.generate
+      self.token = TokenGenerator.generate(original_url)
     end
   end
 end

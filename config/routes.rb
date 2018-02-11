@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :urls, only: [:create, :destroy]
 
   get '/:token', to: 'urls#show',
-                 constraints: { token: /[0-9a-fA-F]{7,8}/ },
+                 constraints: { token: /[a-zA-Z0-9]{7}/ },
                  as: :shortened
 end

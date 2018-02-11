@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'urls#index'
+
+  resources :urls, only: [:create, :destroy]
+
+  get '/:token', to: 'urls#show', constraints: { token: /[0-9a-fA-F]{7,8}/ }
 end
